@@ -64,11 +64,11 @@ namespace :recurly do
 
     # ask for the username
     say "\nStep 1) Go to recurly.com and set up a test account...\n"
-    @recurly_config["username"] = ask("\nStep 2) Enter your recurly username (email):", String)
+    @recurly_config[Rails.env]["username"] = ask("\nStep 2) Enter your recurly username (email):", String)
 
-    @recurly_config["password"] = ask("\nStep 3) Enter your recurly password:", String){ |q| q.echo = "*" }
+    @recurly_config[Rails.env]["password"] = ask("\nStep 3) Enter your recurly password:", String){ |q| q.echo = "*" }
 
-    @recurly_config["site"] = ask("\nStep 4) Enter your recurly base site url (e.g. https://testrecurly2-test.recurly.com):", String)
+    @recurly_config[Rails.env]["site"] = ask("\nStep 4) Enter your recurly base site url (e.g. https://testrecurly2-test.recurly.com):", String)
 
     # saves the yml file
     Recurly::ConfigParser.save(@recurly_config)

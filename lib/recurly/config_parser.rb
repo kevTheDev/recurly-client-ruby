@@ -3,7 +3,7 @@ module Recurly
   module ConfigParser
     class << self
 
-      def parse(path = nil)
+      def parse(environment='development', path = nil)
         path ||= Recurly.settings_path
         settings = {}
         if File.exists?(path)
@@ -12,7 +12,7 @@ module Recurly
           puts "\n#{path} file not found. Run rake recurly:setup to create one\n\n"
         end
 
-        settings
+        settings[environment]
       end
 
       def save(settings = {}, path = nil)
