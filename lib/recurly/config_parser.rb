@@ -11,7 +11,8 @@ module Recurly
         else
           puts "\n#{path} file not found. Run rake recurly:setup to create one\n\n"
         end
-
+        
+        return settings if settings[environment].nil?
         settings[environment]
       end
 

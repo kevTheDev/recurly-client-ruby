@@ -61,7 +61,9 @@ namespace :recurly do
       puts "Install the 'highline' gem for a more interactive experience. If using Bundler, add it to your project's Gemfile (in :development group) and run again."
       exit
     end
-
+    
+    @recurly_config[Rails.env.to_s] = {} if @recurly_config[Rails.env].nil?
+    
     # ask for the username
     say "\nStep 1) Go to recurly.com and set up a test account...\n"
     @recurly_config[Rails.env]["username"] = ask("\nStep 2) Enter your recurly username (email):", String)
