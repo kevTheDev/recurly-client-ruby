@@ -56,10 +56,10 @@ module Recurly
 
     # allows configuration from a yml file that contains the fields:
     # username,password,site
-    def configure_from_yaml(path = nil)
+    def configure_from_yaml(environment='development', path = nil)
       configure do |c|
         # parse configuration from yml
-        recurly_config = ConfigParser.parse(path)
+        recurly_config = ConfigParser.parse(environment, path)
 
         if recurly_config.present?
           c.username = recurly_config["username"]

@@ -10,7 +10,7 @@ module Recurly
           ::Recurly.configure_from_json(ENV["RECURLY_CONFIG"])
         else
           # setup recurly authentication details for testing
-          ::Recurly.configure_from_yaml
+          ::Recurly.configure_from_yaml(Rails.env)
         end
       end
     end
